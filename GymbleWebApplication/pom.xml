@@ -1,0 +1,129 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.gymble</groupId>
+  <artifactId>GymbleWebApplication</artifactId>
+  <packaging>war</packaging>
+  <version>1.0.0</version>
+  <name>GymbleWebApplication Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  
+  <!-- Properties defined below to mention the Version for Dependencies Used in the Application -->
+  <properties>
+  	<springframework.version>4.1.6.RELEASE</springframework.version>
+  	<hibernate.version>4.3.8.Final</hibernate.version>
+  	<mysql.connector.version>5.1.34</mysql.connector.version>
+  	<jackson.databind.version>2.6.3</jackson.databind.version>
+  </properties>
+  
+  <dependencies>
+  	<!-- Spring Dependency Added -->
+  	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-core</artifactId>
+  		<version>${springframework.version}</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-context</artifactId>
+  		<version>${springframework.version}</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-web</artifactId>
+  		<version>${springframework.version}</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-webmvc</artifactId>
+  		<version>${springframework.version}</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-tx</artifactId>
+  		<version>${springframework.version}</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-orm</artifactId>
+  		<version>${springframework.version}</version>
+  	</dependency>
+  	
+  	<!-- Hibernate Dependency -->
+  	<dependency>
+  		<groupId>org.hibernate</groupId>
+  		<artifactId>hibernate-core</artifactId>
+  		<version>${hibernate.version}</version>
+  	</dependency>
+  	
+  	<!-- MySql Connector for Java -->
+  	<dependency>
+  		<groupId>mysql</groupId>
+  		<artifactId>mysql-connector-java</artifactId>
+  		<version>${mysql.connector.version}</version>
+  	</dependency>
+  	
+  	<!-- Jackson to convert in JSON and vice versa -->
+  	<dependency>
+  		<groupId>com.fasterxml.jackson.core</groupId>
+  		<artifactId>jackson-databind</artifactId>
+  		<version>${jackson.databind.version}</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.fasterxml.jackson.core</groupId>
+  		<artifactId>jackson-core</artifactId>
+  		<version>${jackson.databind.version}</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.fasterxml.jackson.core</groupId>
+  		<artifactId>jackson-annotations</artifactId>
+  		<version>${jackson.databind.version}</version>
+  	</dependency>
+  	
+  	<!-- Servlet, JSP and JSTL Dependency.Generally present in the container and hence scope is mentioned as 'provided' -->
+  	<dependency>
+  		<groupId>javax.servlet</groupId>
+  		<artifactId>javax.servlet-api</artifactId>
+  		<version>3.1.0</version>
+  		<scope>provided</scope>
+  	</dependency>
+  	<dependency>
+  		<groupId>javax.servlet.jsp</groupId>
+  		<artifactId>javax.servlet.jsp-api</artifactId>
+  		<version>2.3.1</version>
+  		<scope>provided</scope>
+  	</dependency>
+  	<dependency>
+  		<groupId>javax.servlet</groupId>
+  		<artifactId>jstl</artifactId>
+  		<version>1.2</version>
+  		<scope>provided</scope>
+  	</dependency>
+  	
+  	<!-- JUnit Dependency added by default by Maven during project setup-->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <build>
+  	<pluginManagement>
+  		<plugins>
+  			<!-- Plugin added to use JDK 1.7 as default compiler and not jdk 1.5 chosen by maven 3.3.9 -->
+  			<plugin>
+  				<groupId>org.apache.maven.plugins</groupId>
+  				<artifactId>maven-compiler-plugin</artifactId>
+  				<version>3.1</version>
+  				<configuration>
+  					<source>1.7</source>
+  					<target>1.7</target>
+  				</configuration>
+  			</plugin>
+  		</plugins>
+  	</pluginManagement>
+    <finalName>GymbleWebApplication</finalName>
+  </build>
+</project>
