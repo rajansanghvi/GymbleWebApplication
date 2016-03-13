@@ -15,6 +15,8 @@
   	<hibernate.version>4.3.8.Final</hibernate.version>
   	<mysql.connector.version>5.1.34</mysql.connector.version>
   	<jackson.databind.version>2.6.3</jackson.databind.version>
+  	<javax.validation.version>1.1.0.Final</javax.validation.version>
+  	<hibernate.validator.version>5.1.3.Final</hibernate.validator.version>
   </properties>
   
   <dependencies>
@@ -79,6 +81,19 @@
   		<groupId>com.fasterxml.jackson.core</groupId>
   		<artifactId>jackson-annotations</artifactId>
   		<version>${jackson.databind.version}</version>
+  	</dependency>
+  	
+  	<!-- JSR303 validation specification dependencies -->
+  	<dependency>
+  		<groupId>javax.validation</groupId>
+  		<artifactId>validation-api</artifactId>
+  		<version>${javax.validation.version}</version>
+  	</dependency>
+  	<!-- Hibernate Validation Dependency. It is a Implementation of JSR303 Specification -->
+  	<dependency>
+  		<groupId>org.hibernate</groupId>
+  		<artifactId>hibernate-validator</artifactId>
+  		<version>${hibernate.validator.version}</version>
   	</dependency>
   	
   	<!-- Servlet, JSP and JSTL Dependency.Generally present in the container and hence scope is mentioned as 'provided' -->
