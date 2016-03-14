@@ -26,7 +26,7 @@ public class EsActivity extends ESEntityBase {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "es_activity_id")
+    @Column(name = "activity_id")
     private Long id;
     
     /**

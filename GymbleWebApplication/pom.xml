@@ -12,11 +12,15 @@
   <!-- Properties defined below to mention the Version for Dependencies Used in the Application -->
   <properties>
   	<springframework.version>4.1.6.RELEASE</springframework.version>
-  	<hibernate.version>4.3.8.Final</hibernate.version>
+  	<!-- Hibernate Version 4.3.8 is Used for JPA 2.1 only supported by java ee 7-->
+  	<!-- <hibernate.version>4.3.8.Final</hibernate.version> -->
+  	<!-- Hibernate Version 4.2.21 is Used for JPA 2.0 only supported by java ee 6-->
+  	<hibernate.version>4.2.21.Final</hibernate.version>
   	<mysql.connector.version>5.1.34</mysql.connector.version>
   	<jackson.databind.version>2.6.3</jackson.databind.version>
   	<javax.validation.version>1.1.0.Final</javax.validation.version>
   	<hibernate.validator.version>5.1.3.Final</hibernate.validator.version>
+  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   
   <dependencies>
@@ -100,20 +104,25 @@
   	<dependency>
   		<groupId>javax.servlet</groupId>
   		<artifactId>javax.servlet-api</artifactId>
-  		<version>3.1.0</version>
+  		<!-- Servlet Api 3.1.0 used with Java EE 7 -->
+  		<!-- <version>3.1.0</version> -->
+  		<!-- Servlet Api 3.0.1 used with Java EE 6 -->
+  		<version>3.0.1</version>
   		<scope>provided</scope>
   	</dependency>
   	<dependency>
   		<groupId>javax.servlet.jsp</groupId>
   		<artifactId>javax.servlet.jsp-api</artifactId>
-  		<version>2.3.1</version>
+  		<!-- Servlet JSP version 2.3.1 used with Java EE 7 -->
+  		<!-- <version>2.3.1</version> -->
+  		<!-- Servlet JSP version 2.2.1 used with Java EE 6 -->
+  		<version>2.2.1</version>
   		<scope>provided</scope>
   	</dependency>
   	<dependency>
   		<groupId>javax.servlet</groupId>
   		<artifactId>jstl</artifactId>
   		<version>1.2</version>
-  		<scope>provided</scope>
   	</dependency>
   	
   	<!-- JUnit Dependency added by default by Maven during project setup-->

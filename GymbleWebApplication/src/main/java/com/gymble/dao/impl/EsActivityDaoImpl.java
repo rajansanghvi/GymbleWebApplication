@@ -27,7 +27,7 @@ public class EsActivityDaoImpl extends AbstractDao<Long, EsActivity> implements 
         }
         catch(Exception e)
         {
-            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, e.getMessage());
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
             throw new EsDatabaseException("Database Exception while fetching the Activity with name as : " + name);
         }
     }
@@ -40,7 +40,7 @@ public class EsActivityDaoImpl extends AbstractDao<Long, EsActivity> implements 
         }
         catch(Exception e)
         {
-            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, e.getMessage());
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
             throw new EsDatabaseException("Database Exception while saving the new avtivity with name : " + activity.getName());
         }
     }
@@ -55,7 +55,7 @@ public class EsActivityDaoImpl extends AbstractDao<Long, EsActivity> implements 
         }
         catch(Exception e)
         {
-            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, e.getMessage());
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
             throw new EsDatabaseException("Database Exception while fetching activity with Code : " + code);
         }
     }
@@ -68,7 +68,7 @@ public class EsActivityDaoImpl extends AbstractDao<Long, EsActivity> implements 
         }
         catch(Exception e)
         {
-            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, e.getMessage());
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
             throw new EsDatabaseException("Database Exception while fetching activity with Id : " + id);
         }
     }
@@ -92,7 +92,7 @@ public class EsActivityDaoImpl extends AbstractDao<Long, EsActivity> implements 
         }
         catch(Exception e)
         {
-            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, e.getMessage());
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
             throw new EsDatabaseException("Database Exception while fetching activities with status as : " + status.name());
         }
     }
@@ -105,7 +105,7 @@ public class EsActivityDaoImpl extends AbstractDao<Long, EsActivity> implements 
         }
         catch(Exception e)
         {
-            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, e.getMessage());
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
             throw new EsDatabaseException("Database Exception while updating activity with Code : " + activity.getCode());
         }
     }
