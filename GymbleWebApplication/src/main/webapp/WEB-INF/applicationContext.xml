@@ -17,7 +17,7 @@
 							http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 		
 	<!-- Scan Spring Components In The Given Base Package -->
-    <context:component-scan base-package="com.gymble.*"/>
+    <context:component-scan base-package="com.gymble*"/>
     
     <!-- Annotation Based Spring Implementation --> 
     <mvc:annotation-driven/>
@@ -38,7 +38,7 @@
     	<property name="dataSource" ref="dataSource"/>
         <property name="packagesToScan">
             <list>
-                <value>com.gymble.entity</value>
+                <value>com.gpl.forex.entity</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -56,8 +56,11 @@
     <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
-    
+
     <bean class = "org.springframework.web.servlet.view.InternalResourceViewResolver">
+    	<property name="viewClass">
+    		<value>org.springframework.web.servlet.view.JstlView</value>
+    	</property>
     	<property name="prefix">
     		<value>/WEB-INF/views/</value>
     	</property>

@@ -12,8 +12,6 @@ import com.gymble.entity.EsSequenceGenerator;
 import com.gymble.enumeration.SequenceTitle;
 import com.gymble.exception.EsDatabaseException;
 
-
-
 @Repository("esSequenceGeneratorDao")
 public class EsSequenceGeneratorDaoImpl extends AbstractDao<Long, EsSequenceGenerator> implements EsSequenceGeneratorDao {
 

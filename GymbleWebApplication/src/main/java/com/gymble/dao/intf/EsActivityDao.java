@@ -6,10 +6,8 @@ import com.gymble.entity.EsActivity;
 import com.gymble.enumeration.Status;
 import com.gymble.exception.EsDatabaseException;
 
-
-
 public interface EsActivityDao {
-    
+
     EsActivity findByName(String name) throws EsDatabaseException;
     
     Long save(EsActivity activity) throws EsDatabaseException;

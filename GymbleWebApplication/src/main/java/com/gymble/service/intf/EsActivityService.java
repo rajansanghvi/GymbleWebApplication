@@ -8,15 +8,7 @@ import com.gymble.exception.EsBadDataException;
 import com.gymble.exception.EsBusinessException;
 import com.gymble.exception.EsDataValidationException;
 
-
-
-/**
- * This Interface represents all the task that can be performed on the Activities of the System.
- * @author Rajan Sanghvi
- *
- */
-public interface ESActivityService {
-    
+public interface EsActivityService {
     /**
      * It is used to create a new activity by the Client. Client can add a new activity in the system.
      * @param activity EsActivity Object with all the Required and valid data.

@@ -14,15 +14,11 @@ import com.gymble.entity.EsActivity;
 import com.gymble.enumeration.Status;
 import com.gymble.exception.EsDatabaseException;
 
-
-
 @Repository("esActivityDao")
-public class EsActivityDaoImpl extends AbstractDao<Long, EsActivity> implements EsActivityDao
-{
-    
+public class EsActivityDaoImpl extends AbstractDao<Long, EsActivity> implements EsActivityDao{
+
     @Override
     public EsActivity findByName(String name) throws EsDatabaseException {
-        
         try
         {
             Criteria criteria = getSession().createCriteria(EsActivity.class);
@@ -112,8 +108,6 @@ public class EsActivityDaoImpl extends AbstractDao<Long, EsActivity> implements 
             Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, e.getMessage());
             throw new EsDatabaseException("Database Exception while updating activity with Code : " + activity.getCode());
         }
-        
     }
-    
-    
+
 }

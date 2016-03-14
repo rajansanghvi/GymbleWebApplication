@@ -6,10 +6,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.gymble.dao.intf.EsActivityDao;
 import com.gymble.dao.intf.EsSequenceGeneratorDao;
@@ -21,21 +20,20 @@ import com.gymble.exception.EsBadDataException;
 import com.gymble.exception.EsBusinessException;
 import com.gymble.exception.EsDataValidationException;
 import com.gymble.exception.EsDatabaseException;
-import com.gymble.service.intf.ESActivityService;
+import com.gymble.service.intf.EsActivityService;
 import com.gymble.util.ErrorDetail;
 import com.gymble.util.FieldError;
 
-
-
 @Service("esActivityService")
 @Transactional
-public class EsActivityServiceImpl implements ESActivityService {
-    
+public class EsActivityServiceImpl implements EsActivityService {
+
     @Autowired
     private EsActivityDao esActivityDao;
     
+    @Autowired
     private EsSequenceGeneratorDao esSequenceGeneratorDao;
-
+    
     private List<FieldError> validate(EsActivity activity, List<FieldError> fieldErrors) throws EsDatabaseException
     {
         if(activity == null)
@@ -82,7 +80,6 @@ public class EsActivityServiceImpl implements ESActivityService {
     
     @Override
     public Long create(EsActivity activity, String username) throws EsDataValidationException, EsBusinessException {
-        
         try
         {
             List<FieldError> fieldErrors = new ArrayList<FieldError>();
@@ -124,7 +121,6 @@ public class EsActivityServiceImpl implements ESActivityService {
             Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, e.getMessage());
             throw new EsBusinessException("General Error while creating a new Activity. Please try again later");
         }
-        
     }
 
     @Override
@@ -145,7 +141,6 @@ public class EsActivityServiceImpl implements ESActivityService {
 
     @Override
     public EsActivity findById(Long id) throws EsBadDataException, EsBusinessException {
-        
         if(id == null || id.longValue() <= 0)
             throw new EsBadDataException("Id of the activity can not be less than or equal to zero");
         
@@ -177,7 +172,6 @@ public class EsActivityServiceImpl implements ESActivityService {
 
     @Override
     public EsActivity edit(EsActivity activity, String username) throws EsBusinessException, EsDataValidationException, EsBadDataException {
-        
         try
         {
             List<FieldError> fieldErrors = new ArrayList<FieldError>();
@@ -273,7 +267,6 @@ public class EsActivityServiceImpl implements ESActivityService {
             Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, e.getMessage());
             throw new EsBusinessException("General Error while inactivating the activity with code : " + code);
         }
-        
     }
 
     @Override
@@ -281,4 +274,5 @@ public class EsActivityServiceImpl implements ESActivityService {
         // TODO Auto-generated method stub
         
     }
+
 }
