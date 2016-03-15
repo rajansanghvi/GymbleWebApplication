@@ -77,4 +77,6 @@ public interface EsActivityService {
      * @return The updated activity with the Database Generated id and System Generated Code
      */
     void DeleteByCode(String code);
+    
+    EsActivity GetActivityByName(String name) throws EsBadDataException, EsBusinessException;
 }

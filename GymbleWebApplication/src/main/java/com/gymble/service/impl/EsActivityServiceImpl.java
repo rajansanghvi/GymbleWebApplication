@@ -78,6 +78,7 @@ public class EsActivityServiceImpl implements EsActivityService {
         return fieldErrors;
     }
     
+    //TODO: Authorize the User for Create Activity Permission
     @Override
     public Long create(EsActivity activity, String username) throws EsDataValidationException, EsBusinessException {
         try
@@ -118,7 +119,7 @@ public class EsActivityServiceImpl implements EsActivityService {
         }
         catch(EsDatabaseException e)
         {
-            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, e.getMessage());
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
             throw new EsBusinessException("General Error while creating a new Activity. Please try again later");
         }
     }
@@ -134,7 +135,7 @@ public class EsActivityServiceImpl implements EsActivityService {
             return activity;
         }
         catch (EsDatabaseException e) {
-            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, e.getMessage());
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
             throw new EsBusinessException("General Exception while fetching the activity with code : " + code);
         }
     }
@@ -151,7 +152,7 @@ public class EsActivityServiceImpl implements EsActivityService {
         }
         catch(EsDatabaseException e)
         {
-            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, e.getMessage());
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
             throw new EsBusinessException("General Exception while fetching the activity with id : " + id);
         }
     }
@@ -165,11 +166,12 @@ public class EsActivityServiceImpl implements EsActivityService {
         }
         catch(EsDatabaseException e)
         {
-            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, e.getMessage());
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
             throw new EsBusinessException("General error while fetching activities that are : " + status.name());
         }
     }
 
+    //TODO: Authorize the User for Create Activity Permission
     @Override
     public EsActivity edit(EsActivity activity, String username) throws EsBusinessException, EsDataValidationException, EsBadDataException {
         try
@@ -208,11 +210,12 @@ public class EsActivityServiceImpl implements EsActivityService {
         }
         catch(EsDatabaseException e)        
         {
-            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, e.getMessage());
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
             throw new EsBusinessException("General Error while updating the activity wiht code : " + activity.getCode());
         }
     }
 
+    //TODO: Authorize the User for Create Activity Permission
     @Override
     public EsActivity InactivateByCode(String code, String username) throws EsBadDataException, EsBusinessException {
         if(code == null || code.equals(""))
@@ -236,11 +239,12 @@ public class EsActivityServiceImpl implements EsActivityService {
         }
         catch(EsDatabaseException e)
         {
-            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, e.getMessage());
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
             throw new EsBusinessException("General Error while inactivating the activity with code : " + code);
         }
     }
 
+    //TODO: Authorize the User for Create Activity Permission
     @Override
     public EsActivity AcitvateByCode(String code, String username) throws EsBadDataException, EsBusinessException {
         if(code == null || code.equals(""))
@@ -264,7 +268,7 @@ public class EsActivityServiceImpl implements EsActivityService {
         }
         catch(EsDatabaseException e)
         {
-            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, e.getMessage());
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
             throw new EsBusinessException("General Error while inactivating the activity with code : " + code);
         }
     }
@@ -274,5 +278,20 @@ public class EsActivityServiceImpl implements EsActivityService {
         // TODO Auto-generated method stub
         
     }
+
+	@Override
+	public EsActivity GetActivityByName(String name) throws EsBadDataException, EsBusinessException {
+		if(name == null || name.equals(""))
+			throw new EsBadDataException("Activity Name can not be null or empty");
+		
+		EsActivity activity = null;
+		try {
+			activity = esActivityDao.findByName(name);
+		} catch (EsDatabaseException e) {
+			Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+            throw new EsBusinessException("General Error while fetching an activity with name : " + name);
+		}
+		return activity;
+	}
 
 }

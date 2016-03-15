@@ -20,12 +20,12 @@ public class EsSequenceGeneratorDaoImpl extends AbstractDao<Long, EsSequenceGene
         try
         {
             Criteria criteria = getSession().createCriteria(EsSequenceGenerator.class);
-            criteria.add(Restrictions.eq("title", title.name()));
+            criteria.add(Restrictions.eq("title", title));
             return (EsSequenceGenerator) criteria.uniqueResult();
         }
         catch(Exception e)
         {
-            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, e.getMessage());
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
             throw new EsDatabaseException("Database Exception while fetching the Sequence generator for " + title.name());
         }
     }
@@ -38,7 +38,7 @@ public class EsSequenceGeneratorDaoImpl extends AbstractDao<Long, EsSequenceGene
         }
         catch(Exception e)
         {
-            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, e.getMessage());
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
             throw new EsDatabaseException("Database Exception while updating the Sequence generator for " + sequenceGenerator.getTitle());
         }
     }

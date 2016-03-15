@@ -21,7 +21,7 @@ public abstract class ESEntityBase implements Serializable{
 
 	@Version
 	@Column(name ="version")
-	private Integer version =0;
+	private Integer version;
 
 	@Column(name ="active",nullable = false)
 	private Boolean active;

@@ -21,6 +21,7 @@
 				<tr>
 					<td>${activity.code}</td>
 					<td>${activity.name}</td>
+					<td><a href='<c:url value="/activities/edit-activity/${activity.code}" />'>Edit</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
