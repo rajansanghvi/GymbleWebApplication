@@ -31,6 +31,24 @@ public class EsStudentTO {
 	private String email;
 
 	private String emergencyContact;
+	
+//	private EsActivity esActivity;
+
+//	public String getActivityName() {
+//		return ActivityName;
+//	}
+//
+//	public void setActivityName(String activityName) {
+//		ActivityName = activityName;
+//	}
+
+//	public EsActivity getEsActivity() {
+//		return esActivity;
+//	}
+//
+//	public void setEsActivity(EsActivity esActivity) {
+//		this.esActivity = esActivity;
+//	}
 
 	public Integer getId() {
 		return id;
