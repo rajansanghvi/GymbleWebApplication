@@ -1,7 +1,6 @@
 package com.gymble.tos;
 
 import java.util.Date;
-import java.util.Random;
 
 import com.gymble.entity.*;
 
@@ -32,24 +31,6 @@ public class EsStudentTO {
 
 	private String emergencyContact;
 	
-//	private EsActivity esActivity;
-
-//	public String getActivityName() {
-//		return ActivityName;
-//	}
-//
-//	public void setActivityName(String activityName) {
-//		ActivityName = activityName;
-//	}
-
-//	public EsActivity getEsActivity() {
-//		return esActivity;
-//	}
-//
-//	public void setEsActivity(EsActivity esActivity) {
-//		this.esActivity = esActivity;
-//	}
-
 	public Integer getId() {
 		return id;
 	}
@@ -75,7 +56,6 @@ public class EsStudentTO {
 	}
 
 	public String getUserCode() {
-		this.userCode = new Random().toString();
 		return userCode;
 	}
 

@@ -11,15 +11,15 @@
   
   <!-- Properties defined below to mention the Version for Dependencies Used in the Application -->
   <properties>
-  	<springframework.version>4.1.6.RELEASE</springframework.version>
+  	<springframework.version>4.1.7.RELEASE</springframework.version>
   	<!-- Hibernate Version 4.3.8 is Used for JPA 2.1 only supported by java ee 7-->
   	<!-- <hibernate.version>4.3.8.Final</hibernate.version> -->
   	<!-- Hibernate Version 4.2.21 is Used for JPA 2.0 only supported by java ee 6-->
-  	<hibernate.version>4.2.21.Final</hibernate.version>
-  	<mysql.connector.version>5.1.34</mysql.connector.version>
-  	<jackson.databind.version>2.6.3</jackson.databind.version>
+  	<hibernate.version>4.3.10.Final</hibernate.version>
+  	<mysql.connector.version>5.1.31</mysql.connector.version>
   	<javax.validation.version>1.1.0.Final</javax.validation.version>
   	<hibernate.validator.version>5.1.3.Final</hibernate.validator.version>
+  	<jackson.version>2.5.3</jackson.version>
   	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   
@@ -69,24 +69,6 @@
   		<artifactId>mysql-connector-java</artifactId>
   		<version>${mysql.connector.version}</version>
   	</dependency>
-  	
-  	<!-- Jackson to convert in JSON and vice versa -->
-  	<dependency>
-  		<groupId>com.fasterxml.jackson.core</groupId>
-  		<artifactId>jackson-databind</artifactId>
-  		<version>${jackson.databind.version}</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>com.fasterxml.jackson.core</groupId>
-  		<artifactId>jackson-core</artifactId>
-  		<version>${jackson.databind.version}</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>com.fasterxml.jackson.core</groupId>
-  		<artifactId>jackson-annotations</artifactId>
-  		<version>${jackson.databind.version}</version>
-  	</dependency>
-  	
   	<!-- JSR303 validation specification dependencies -->
   	<dependency>
   		<groupId>javax.validation</groupId>
@@ -99,6 +81,11 @@
   		<artifactId>hibernate-validator</artifactId>
   		<version>${hibernate.validator.version}</version>
   	</dependency>
+  	<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+	</dependency>
   	
   	<!-- Servlet, JSP and JSTL Dependency.Generally present in the container and hence scope is mentioned as 'provided' -->
   	<dependency>
