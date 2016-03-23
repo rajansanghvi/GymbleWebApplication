@@ -9,18 +9,34 @@ App.controller('StudentController', ['$scope', 'StudentService', function($scope
         	  email:'',phone:'',emergencyContact:'',userCode:''
         		  };
           self.users=[];
-              
-          self.fetchAllUsers = function(){
-        	  StudentService.fetchAllUsers()
-                  .then(
-      					       function(d) {
-      						        self.users = d;
-      					       },
-            					function(errResponse){
-            						console.error('Error while fetching students');
-            					}
-      			       );
+          //self.selectedTestAccount = null;
+          self.activity = {id:null,name:'',code:''};
+          self.activities = [];
+
+          self.populateActivityDropDown = function(){
+        	  StudentService.populateActivityDropDown()
+        	  .then(
+        			  function(d){
+        				  self.activities = d;
+        			  },
+        			  function(errResponse){
+        				  console.error('Error while fetching students');  
+        			  }
+        			  );
+        	  
           };
+              
+//          self.fetchAllUsers = function(){
+//        	  StudentService.fetchAllUsers()
+//                  .then(
+//      					       function(d) {
+//      						        self.users = d;
+//      					       },
+//            					function(errResponse){
+//            						console.error('Error while fetching students');
+//            					}
+//      			       );
+//          };
            
           self.createUser = function(user){
         	  StudentService.createUser(user)
@@ -52,8 +68,8 @@ App.controller('StudentController', ['$scope', 'StudentService', function($scope
                   );
           };
 
-          self.fetchAllUsers();
-
+         // self.fetchAllUsers();
+          self.populateActivityDropDown();
           self.submit = function() {
               if(self.user.id==null){
                   console.log('Saving New User', self.user);    

@@ -146,7 +146,6 @@
 							</div>
 						</div>
 					</div>
-
 					<div class="row">
 						<div class="form-actions floatRight">
 							<input type="submit" value="{{!ctrl.user.id ? 'Add' : 'Update'}}"
@@ -156,9 +155,16 @@
 								Form</button>
 						</div>
 					</div>
+					
 				</form>
+					
+				<b>Activity Data:</b> <select id="ctrl.activity">
+						<option value="">-- Select Persons --</option>
+						<option data-ng-repeat="personData in ctrl.activities" value="{{personData.id}}">{{personData.name}}</option>
+					</select><br>
 			</div>
 		</div>
+		
 		<!-- <div class="panel panel-default">
 			Default panel contents
 			<div class="panel-heading">
