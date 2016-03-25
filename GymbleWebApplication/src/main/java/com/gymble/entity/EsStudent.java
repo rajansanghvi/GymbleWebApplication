@@ -19,6 +19,8 @@ import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import com.gymble.tos.EsStudentTO;
+
 @Entity
 @Table(name = "es_user")
 public class EsStudent extends ESEntityBase {
@@ -62,6 +64,10 @@ public class EsStudent extends ESEntityBase {
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "es_user_contact_rel", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"), inverseJoinColumns = @JoinColumn(name = "contact_id", referencedColumnName = "contact_id"))
 	private List<EsContact> contacts;
+
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "es_user_batch_rel", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"), inverseJoinColumns = @JoinColumn(name = "batch_id", referencedColumnName = "batch_id"))
+	private List<EsBatch> esBatches ;
 
 	public Integer getId() {
 		return id;
@@ -153,6 +159,14 @@ public class EsStudent extends ESEntityBase {
 		this.contacts = contacts;
 	}
 
+	public List<EsBatch> getEsBatches() {
+		return esBatches;
+	}
+
+	public void setEsBatches(List<EsBatch> esBatches) {
+		this.esBatches = esBatches;
+	}
+
 	public EsStudent(Boolean active, Date modified,
 			String createdBy, String modifiedBy, Integer Version,
 			EsMedical medical, String firstName, String middleName,
@@ -182,5 +196,21 @@ public class EsStudent extends ESEntityBase {
 	// public void setUserProfiles(Set<UserProfile> userProfiles) {
 	// this.userProfiles = userProfiles;
 	// }
+	EsStudentTO convertToTO()
+	{
+		EsStudentTO esStudent = new EsStudentTO();
+		esStudent.setFirstName(this.firstName);
+		esStudent.setMiddleName(this.middleName);
+		esStudent.setLastName(this.lastName);
+		if (this.address != null)
+		esStudent.setAddress(this.address);
+		esStudent.setMedical(this.medical);
+		if (this.userCode != null)
+		esStudent.setUserCode(this.userCode);
+		esStudent.setStudentInfo(this.studentInfo);
+		//contacts
+		
+		return esStudent;
+	}
 
 }

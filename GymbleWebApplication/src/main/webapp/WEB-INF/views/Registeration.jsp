@@ -5,6 +5,7 @@
 <head>
 <script
 		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+		<script src="http://code.angularjs.org/1.4.4/angular-route.js"></script>
 	<script src="<c:url value='/static/js/app.js' />"></script>
 	<script src="<c:url value='/static/js/service/user_service.js' />"></script>
 	<script
@@ -40,13 +41,13 @@
 <link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
 </head>
 <body ng-app="myApp" class="ng-cloak">
-	<div class="generic-container"
-		ng-controller="StudentController as ctrl">
+	<div class="generic-container">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<span class="lead">Student Registration Form </span>
 			</div>
-			<div class="formcontainer">
+			<a href="#/masters/activity">Activity</a>
+			<div class="formcontainer" ng-controller="StudentController as ctrl">
 				<form ng-submit="ctrl.submit()" name="myForm"
 					class="form-horizontal">
 					<input type="hidden" ng-model="ctrl.user.id" />
@@ -130,7 +131,83 @@
 							</div>
 						</div>
 					</div>
-
+					<div class="row">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-lable" for="file">Address
+								Line2</label>
+							<div class="col-md-7">
+								<input type="text" ng-model="ctrl.user.address.addressLine2"
+									class="form-control input-sm"
+									placeholder="Enter your Address. [This field is validation free]" />
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-lable" for="file">City
+						</label>
+							<div class="col-md-7">
+								<input type="text" ng-model="ctrl.user.address.city"
+									class="form-control input-sm"
+									placeholder="Enter your city. [This field is validation free]" />
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-lable" for="file">State
+								</label>
+							<div class="col-md-7">
+								<input type="text" ng-model="ctrl.user.address.addressLine2"
+									class="form-control input-sm"
+									placeholder="Enter your Address. [This field is validation free]" />
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-lable" for="file">Country
+								</label>
+							<div class="col-md-7">
+								<input type="text" ng-model="ctrl.user.address.addressLine2"
+									class="form-control input-sm"
+									placeholder="Enter your Address. [This field is validation free]" />
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-lable" for="file">Blood Group
+								</label>
+							<div class="col-md-7">
+								<input type="text" ng-model="ctrl.user.medical.bloodGroup"
+									class="form-control input-sm"
+									placeholder="Enter your Blood Group. [This field is validation free]" />
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-lable" for="file">Other Specificaions
+								</label>
+							<div class="col-md-7">
+								<input type="text" ng-model="ctrl.user.medical.otherSpec"
+									class="form-control input-sm"
+									placeholder="Enter your Blood Group. [This field is validation free]" />
+							</div>
+						</div>
+					</div>
+				<div class="row">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-lable" for="file">DOB</label>
+							<div class="col-md-7">
+								<p ng-bind="ctrl.user.studentInfo.DOB | date:'MM/dd/yyyy'"></p>
+							</div>
+						</div>
+					</div>
+					
+					
+						
 					<div class="row">
 						<div class="form-group col-md-12">
 							<label class="col-md-2 control-lable" for="file">Email</label>
@@ -158,12 +235,34 @@
 					
 				</form>
 					
-				<b>Activity Data:</b> <select id="ctrl.activity">
-						<option value="">-- Select Persons --</option>
-						<option data-ng-repeat="personData in ctrl.activities" value="{{personData.id}}">{{personData.name}}</option>
-					</select><br>
-			</div>
-		</div>
+				<!-- <b>Activity Data:</b> <select id="ctrl.activity" ng-model="activities">
+						<option value="">-- Select Activities --</option>
+						<option id ="act" data-ng-repeat="personData in ctrl.activities" data-ng-change="populateBatchesDropDown()" value="{{personData.id}}" >{{personData.name}}</option>
+					</select><br> -->
+					
+					<select ng-model="ctrl.activity"                
+    				ng-options="obj.id as obj.name for obj in ctrl.activities"
+   					ng-change="ctrl.populateBatchesDropDown()"
+    				class="form-control" 
+    				ng-required="true"
+    				id="act">
+    				<option value="">-- Choose Activity --</option>
+					</select>      
+					
+					
+				<!-- <b>Batches:</b> <select id="ctrl.batch">
+						<option value="">-- Select Batch --</option>
+						<option data-ng-repeat="personData in ctrl.batches"  value="{{personData.id}}">{{personData.name}}</option>
+				</select><br> -->
+				<select ng-model="ctrl.batch" 
+    			ng-options="x.id as x.code for x in ctrl.batches"
+    			class="form-control"
+    			ng-required="true"
+    			id="batch">
+    			<option value="">-- Choose Batch --</option>
+				</select>    
+				</div>
+				</div>
 		
 		<!-- <div class="panel panel-default">
 			Default panel contents

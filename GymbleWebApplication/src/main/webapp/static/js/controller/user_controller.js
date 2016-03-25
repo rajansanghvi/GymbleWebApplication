@@ -6,12 +6,16 @@ App.controller('StudentController', ['$scope', 'StudentService', function($scope
         	  addressLine2:'',city:'',state:'',country:'',pincode:'',otherDetails:''},
         	  medical:{id:null,bloodGroup:'',medicinesRequired:'',otherSpec:''},
         	  studentInfo:{id:null,guardianName:'',DOB:''},
-        	  email:'',phone:'',emergencyContact:'',userCode:''
+        	  email:'',phone:'',emergencyContact:'',userCode:'',batches:[{id:null,code:''}]
         		  };
           self.users=[];
           //self.selectedTestAccount = null;
           self.activity = {id:null,name:'',code:''};
           self.activities = [];
+          self.batches =[];
+          self.batch={id:null,code:''};
+          var selectedActivityId = 0;
+          
 
           self.populateActivityDropDown = function(){
         	  StudentService.populateActivityDropDown()
@@ -24,6 +28,18 @@ App.controller('StudentController', ['$scope', 'StudentService', function($scope
         			  }
         			  );
         	  
+          };
+          self.populateBatchesDropDown =function(){
+        	  selectedActivityId = document.getElementById("act").value;
+        	StudentService.populateBatchesDropDown(selectedActivityId)
+        	.then(
+        			function(d){
+        				self.batches=d;
+        			},
+        			function(errResponse){
+        				  console.error('Error while fetching students');
+        			}
+        			);
           };
               
 //          self.fetchAllUsers = function(){
@@ -106,3 +122,6 @@ App.controller('StudentController', ['$scope', 'StudentService', function($scope
           };
 
       }]);
+App.controller('activityController',['$scope','$routeParams',function($scope,$routeParams){
+	//$scope.person=$scope.people[$routeParams.id]
+}]);

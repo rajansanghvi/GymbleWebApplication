@@ -1,6 +1,7 @@
 package com.gymble.tos;
 
 import java.util.Date;
+import java.util.List;
 
 import com.gymble.entity.*;
 
@@ -30,6 +31,8 @@ public class EsStudentTO {
 	private String email;
 
 	private String emergencyContact;
+	
+	private List<EsContact> contacts;
 	
 	public Integer getId() {
 		return id;
@@ -61,6 +64,14 @@ public class EsStudentTO {
 
 	public void setUserCode(String userCode) {
 		this.userCode = userCode;
+	}
+
+	public List<EsContact> getContacts() {
+		return contacts;
+	}
+
+	public void setContacts(List<EsContact> contacts) {
+		this.contacts = contacts;
 	}
 
 	public String getMiddleName() {
